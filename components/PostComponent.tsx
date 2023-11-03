@@ -11,7 +11,6 @@ export default function PostComponent(props: Props) {
       <h3 className="text-xl text-blue-600">
         {props.post.title} av {props.post.author}
       </h3>
-      <p>{props.post.content}</p>
     </div>
   );
 }

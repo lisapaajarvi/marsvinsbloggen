@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@tinymce/tinymce-react": "^4.3.0",
+    "html-react-parser": "^5.0.5",
     "mysql2": "^3.6.2",
     "next": "13.5.4",
     "react": "^18",
