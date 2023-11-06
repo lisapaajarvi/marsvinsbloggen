@@ -8,10 +8,8 @@ export default async function StartPage() {
 
   return (
     <div className="flex flex-col gap-4">
-      <p>Välkommen till Marsvinsbloggen!</p>
-      {session && (
-        <p>Du är inloggad som {session.user && session.user.email}</p>
-      )}
+      <p className="text-xl">Välkommen till Marsvinsbloggen!</p>
+      {session && <p>Du är inloggad som {session.user && session.user.name}</p>}
       <Navigation />
     </div>
   );
