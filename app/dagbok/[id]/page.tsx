@@ -1,4 +1,3 @@
-import Editor from "@/components/Editor";
 import { Post } from "@/interfaces";
 import { dbQuery } from "@/lib/db";
 import parse from "html-react-parser";
@@ -6,7 +5,10 @@ import Link from "next/link";
 
 export default async function PostPage({ params }: { params: { id: string } }) {
   const sql =
-    "SELECT p.id, p.title, p.content, p.isPrivate, p.isDeleted, users.username AS author FROM posts p INNER JOIN users ON p.author = users.id WHERE p.id =" +
+    // längre query (men lätt att se vad som hämtas)
+    // "SELECT p.id, p.title, p.content, p.isDeleted, p.isPrivate, users.username AS author FROM posts p JOIN users ON p.author = users.id WHERE p.id =" +
+    // mer kompakt query för om man vill hämta allt
+    "Select p.*, users.username AS author from posts p join users on p.author=users.id where p.id=" +
     parseInt(params.id);
   console.log(sql);
   const post = (await dbQuery({
@@ -22,9 +24,14 @@ export default async function PostPage({ params }: { params: { id: string } }) {
         {post[0].title} av {post[0].author}
       </p>
       {htmlContent}
-      <button>DELETE</button>
       <Link href={`/dagbok/edit/${post[0].id}`}>
-        <button>EDIT</button>
+        <button
+          className={
+            "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded justify-end"
+          }
+        >
+          REDIGERA INLÄGG
+        </button>
       </Link>
     </div>
   );
