@@ -9,10 +9,10 @@ export default function Navigation() {
       <ul className="list-none flex gap-2">
         <li>
           <Link
-            className={`link ${pathname === "/om-mig" ? "active" : ""}`}
-            href="/om-mig"
+            className={`link ${pathname === "/login" ? "active" : ""}`}
+            href="/login"
           >
-            Om mig
+            Logga in
           </Link>
         </li>
         <li>
